@@ -1,4 +1,5 @@
 
+/* --- seu CSS já existente --- */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -35,4 +36,58 @@ button {
 }
 button:hover {
   background-color: #0056b3;
+}
+
+/* --- novo CSS do cabeçalho --- */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:center; /* centraliza o bloco de títulos no container */
+  gap:16px;
+  padding:20px 0;         /* usa o espaço vertical do seu card */
+}
+
+.logo{
+  height:100px;
+}
+
+/* Centraliza títulos um abaixo do outro */
+.titles{
+  text-align:center;
+}
+
+.brand{
+  font-size:36px;
+  font-weight:bold;
+  display:block;
+  margin-bottom:4px;
+}
+
+.subtitle{
+  font-size:18px;
+  color:#003366;
+}
+
+/* O spacer “imita” a largura da logo para o centro ficar perfeito */
+.spacer{
+  width:100px; /* ajuste para combinar com a largura visual da logo */
+  height:1px;
+}
+
+/* --- Mobile: evita sobreposição e fica tudo lindo --- */
+@media (max-width: 600px){
+  .header{
+    flex-direction:column;  /* empilha */
+    align-items:flex-start; /* logo fica à esquerda */
+  }
+  .logo{
+    height:64px;
+  }
+  .titles{
+    align-self:stretch;     /* títulos ocupam a largura */
+    text-align:center;      /* continuam centralizados */
+  }
+  .spacer{
+    display:none;           /* não precisa no empilhado */
+  }
 }
