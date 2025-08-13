@@ -55,19 +55,23 @@
 </head>
 
 <body>
-
-  <div style="display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
-
-    <!-- Logo fixa no canto esquerdo -->
+  <!-- Cabeçalho largura total -->
   <header class="header">
-  <img src="logo.png" alt="Logo" class="logo">
-  <div class="titles">
-    <span class="brand">SISMAQ</span>
-    <span class="subtitle">SISTEMA DE MANUTENÇÃO</span>
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="titles">
+      <span class="brand">SISMAQ</span>
+      <span class="subtitle">SISTEMA DE MANUTENÇÃO</span>
+    </div>
+    <div class="spacer"></div>
+  </header>
+
+  <!-- Card centralizado para o formulário -->
+  <div class="container">
+    <form id="formManutencao">
+      <!-- campos do formulário -->
+    </form>
   </div>
-  <!-- Espaçador para manter o texto centralizado mesmo com logo à esquerda -->
-  <div class="spacer"></div>
-</header>
+</body>
 
   <form id="formManutencao" onsubmit="enviarEmail(); return false;" style="padding: 20px;">
     <label>Solicitante:</label>
@@ -163,5 +167,6 @@
 
 
 </html>
+
 
 
