@@ -104,15 +104,21 @@
     <label>Descrição do Problema:</label>
     <textarea id="descricao" rows="4" placeholder="Ex: Cilindro da Garra..."></textarea>
 
-    <!-- Ícone de anexo abaixo da descrição -->
-    <div style="text-align:center; margin-top:10px;">
-      <button type="button" class="anexo-btn" id="btnAnexar" title="Anexar até 3 imagens">📎 Anexar imagens</button>
-      <input type="file" id="imagens" accept="image/*" multiple style="display:none;">
-      <div style="font-size:12px; color:#666; margin-top:6px;"></div>
+  <!-- Anexar imagens -->
+<div style="text-align:center; margin-top:10px;">
+  <!-- Input “invisível” fora da tela (melhor que display:none para browsers) -->
+  <input type="file" id="imagens" accept="image/*" multiple
+         style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
 
-      <!-- Pré-visualização -->
-      <div id="preview" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;"></div>
-    </div>
+  <!-- Botão visual: o label dispara o input -->
+  <label for="imagens" class="anexo-btn"
+         style="cursor:pointer; font-size:16px; padding:8px 16px; border-radius:6px; display:inline-block;">
+    📎 Anexar imagens (até 3)
+  </label>
+
+  <!-- Pré-visualização -->
+  <div id="preview" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;"></div>
+</div>
     <br>
     <button type="submit">Enviar Solicitação</button>
   </form>
@@ -154,5 +160,6 @@
   </script>
 
 </body>
+
 
 </html>
