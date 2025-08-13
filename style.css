@@ -1,8 +1,12 @@
-
-/* --- seu CSS já existente --- */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  margin: 0; /* remove centralização do body */
+  padding: 0;
+}
+
+/* card centralizado só para o formulário */
+.container {
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
@@ -10,15 +14,18 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
 h1 {
   text-align: center;
   color: #2b2b2b;
 }
+
 label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
 }
+
 input, select, textarea, button {
   width: 100%;
   padding: 8px;
@@ -27,6 +34,7 @@ input, select, textarea, button {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
 button {
   background-color: #007bff;
   color: white;
@@ -34,60 +42,8 @@ button {
   margin-top: 15px;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #0056b3;
 }
 
-/* --- novo CSS do cabeçalho --- */
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:center; /* centraliza o bloco de títulos no container */
-  gap:16px;
-  padding:20px 0;         /* usa o espaço vertical do seu card */
-}
-
-.logo{
-  height:100px;
-}
-
-/* Centraliza títulos um abaixo do outro */
-.titles{
-  text-align:center;
-}
-
-.brand{
-  font-size:36px;
-  font-weight:bold;
-  display:block;
-  margin-bottom:4px;
-}
-
-.subtitle{
-  font-size:18px;
-  color:#003366;
-}
-
-/* O spacer “imita” a largura da logo para o centro ficar perfeito */
-.spacer{
-  width:100px; /* ajuste para combinar com a largura visual da logo */
-  height:1px;
-}
-
-/* --- Mobile: evita sobreposição e fica tudo lindo --- */
-@media (max-width: 600px){
-  .header{
-    flex-direction:column;  /* empilha */
-    align-items:flex-start; /* logo fica à esquerda */
-  }
-  .logo{
-    height:64px;
-  }
-  .titles{
-    align-self:stretch;     /* títulos ocupam a largura */
-    text-align:center;      /* continuam centralizados */
-  }
-  .spacer{
-    display:none;           /* não precisa no empilhado */
-  }
-}
