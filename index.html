@@ -59,15 +59,15 @@
   <div style="display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
 
     <!-- Logo fixa no canto esquerdo -->
-    <img src="logo.png" alt="Logo"
-      style="height: 100px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
-
-    <!-- Texto centralizado na tela -->
-    <div style="text-align: center;">
-      <span style="font-size: 36px; font-weight: bold; display: block;">SISMAQ</span>
-      <span style="font-size: 18px; color: #003366;">SISTEMA DE MANUTENÇÃO</span>
-    </div>
+  <header class="header">
+  <img src="logo.png" alt="Logo" class="logo">
+  <div class="titles">
+    <span class="brand">SISMAQ</span>
+    <span class="subtitle">SISTEMA DE MANUTENÇÃO</span>
   </div>
+  <!-- Espaçador para manter o texto centralizado mesmo com logo à esquerda -->
+  <div class="spacer"></div>
+</header>
 
   <form id="formManutencao" onsubmit="enviarEmail(); return false;" style="padding: 20px;">
     <label>Solicitante:</label>
@@ -163,4 +163,5 @@
 
 
 </html>
+
 
