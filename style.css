@@ -125,3 +125,39 @@ input[type="date"]::-webkit-calendar-picker-indicator { margin:0; padding:0 6px;
   .spacer{ display:none; }
   .titles{ width:100%; text-align:center; }
 }
+/* ==== Correção de estilo para <input type="date"> em todas as plataformas ==== */
+input[type="date"] {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;                 /* evita overflow em layouts flex */
+  box-sizing: border-box;
+  height: 44px;                 /* altura igual aos outros inputs */
+  line-height: 1.2;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  background-clip: padding-box; /* garante que o border-radius funcione */
+  font: inherit;
+  -webkit-appearance: none;     /* remove estilo nativo iOS */
+  appearance: none;
+}
+
+/* Ajusta o conteúdo interno no Safari/WebKit */
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  min-height: 1.2em;
+}
+
+/* Ajusta o ícone/calendário para não deslocar o texto */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  margin: 0;
+  padding: 0 6px;
+}
+
+/* iOS: evita zoom ao focar quando fonte < 16px */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea, button {
+    font-size: 16px;
+  }
+}
