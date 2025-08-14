@@ -1,38 +1,124 @@
-
-body {
+/* Fundo da página */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #003366;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-h1 {
+
+/* Cabeçalho responsivo */
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;     /* centraliza o bloco de títulos */
+  gap: clamp(8px, 2vw, 16px);
+  padding: clamp(12px, 3vw, 24px) 0;
+}
+
+.logo{
+  /* Altura da logo escala conforme a tela, com limites */
+  height: clamp(56px, 10vw, 100px);
+  flex: 0 0 auto;
+}
+
+/* Bloco dos títulos centralizados */
+.titles{
   text-align: center;
-  color: #2b2b2b;
 }
-label {
+
+/* Tipografia fluida usando clamp: (min, preferido, max) */
+.brand{
   display: block;
-  margin-top: 10px;
   font-weight: bold;
+  font-size: clamp(24px, 6vw, 36px);
+  margin-bottom: 4px;
 }
-input, select, textarea, button {
+
+.subtitle{
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: #003366;
+}
+
+/* Spacer para equilibrar o centro (imita a largura da logo) */
+.spacer{
+  width: clamp(56px, 10vw, 100px);
+  height: 1px;
+  flex: 0 0 auto;
+}
+
+/* Card do formulário com largura fluida */
+.container{
+  width: min(92vw, 640px);                   /* fluido: até 640px */
+  margin: clamp(16px, 4vw, 32px) auto;
+  padding: clamp(12px, 3vw, 24px);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+/* Campos e botões com fonte/tamanho fluido */
+label{
+  display: block;
+  margin-top: clamp(8px, 2vw, 12px);
+  font-weight: bold;
+  font-size: clamp(14px, 2.8vw, 16px);
+}
+
+input, select, textarea, button{
   width: 100%;
-  padding: 8px;
+  padding: clamp(8px, 2.5vw, 12px);
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  font-size: clamp(14px, 2.8vw, 16px);
 }
-button {
-  background-color: #007bff;
-  color: white;
+
+button{
+  background-color: #003366;
+  color: #fff;
   border: none;
-  margin-top: 15px;
+  margin-top: clamp(12px, 3vw, 16px);
   cursor: pointer;
 }
-button:hover {
-  background-color: #0056b3;
+button:hover{ background-color:#0055aa; }
+
+/* Botão de anexo e pré-visualização */
+.anexo-btn{ 
+  background: none; border: none; cursor: pointer; 
+  font-size: clamp(16px, 3.5vw, 18px); 
+  color:#003366; padding: 8px 14px; border-radius:6px;
 }
+.anexo-btn:hover{ color:#0055aa; background:#eef4ff; }
+
+.visually-hidden-file{
+  position:absolute; left:-9999px; width:1px; height:1px; opacity:0; overflow:hidden;
+}
+
+#preview{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;
+}
+#preview img{
+  width: clamp(72px, 18vw, 100px);
+  height: clamp(72px, 18vw, 100px);
+  object-fit: cover; border:1px solid #ccc; border-radius:6px;
+}
+
+/* Footer */
+footer{
+  text-align:center; 
+  font-size: clamp(12px, 2.8vw, 14px);
+  margin: 24px 0 32px;
+  padding: 0 12px;
+}
+
+/* Segurança extra no mobile muito estreito:
+   se quiser empilhar header, ative este bloco */
+@media (max-width: 420px){
+  .header{ flex-direction: column; align-items: flex-start; padding-left: clamp(12px, 4vw, 24px); }
+  .spacer{ display:none; }
+  .titles{ width: 100%; text-align: center; }
+}
+
+
