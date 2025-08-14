@@ -55,23 +55,19 @@
 </head>
 
 <body>
-  <!-- Cabeçalho largura total -->
-  <header class="header">
-    <img src="logo.png" alt="Logo" class="logo">
-    <div class="titles">
-      <span class="brand">SISMAQ</span>
-      <span class="subtitle">SISTEMA DE MANUTENÇÃO</span>
-    </div>
-    <div class="spacer"></div>
-  </header>
 
-  <!-- Card centralizado para o formulário -->
-  <div class="container">
-    <form id="formManutencao">
-      <!-- campos do formulário -->
-    </form>
+  <div style="display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+
+    <!-- Logo fixa no canto esquerdo -->
+    <img src="logo.png" alt="Logo"
+      style="height: 100px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+
+    <!-- Texto centralizado na tela -->
+    <div style="text-align: center;">
+      <span style="font-size: 36px; font-weight: bold; display: block;">SISMAQ</span>
+      <span style="font-size: 18px; color: #003366;">SISTEMA DE MANUTENÇÃO</span>
+    </div>
   </div>
-</body>
 
   <form id="formManutencao" onsubmit="enviarEmail(); return false;" style="padding: 20px;">
     <label>Solicitante:</label>
@@ -117,7 +113,7 @@
   <!-- Botão visual: o label dispara o input -->
   <label for="imagens" class="anexo-btn"
          style="cursor:pointer; font-size:16px; padding:8px 16px; border-radius:6px; display:inline-block;">
-    📎 Anexar imagens 
+    📎 Anexar imagens (até 3)
   </label>
 
   <!-- Pré-visualização -->
@@ -167,6 +163,4 @@
 
 
 </html>
-
-
 
