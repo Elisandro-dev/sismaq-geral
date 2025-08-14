@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SISMAQ - Solicitação de Manutenção</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      color: #003366;
+      font-family: Arial, sans-serif;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0055aa;
+    }
+
+    .anexo-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #003366;
+    }
+
+    .anexo-btn:hover {
+      color: #0055aa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div style="display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+
+    <!-- Logo fixa no canto esquerdo -->
+    <img src="logo.png" alt="Logo"
+      style="height: 100px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
+
+    <!-- Texto centralizado na tela -->
+    <div style="text-align: center;">
+      <span style="font-size: 36px; font-weight: bold; display: block;">SISMAQ</span>
+      <span style="font-size: 18px; color: #003366;">SISTEMA DE MANUTENÇÃO</span>
+    </div>
+  </div>
+
+  <form id="formManutencao" onsubmit="enviarEmail(); return false;" style="padding: 20px;">
+    <label>Solicitante:</label>
+    <input type="text" id="solicitante" placeholder="Nome do solicitante" required>
+
+    <label>E-mail do Solicitante:</label>
+    <input type="email" id="email_solicitante" placeholder="Ex: nome@empresa.com" required>
+
+    <label>Cliente:</label>
+    <input type="text" id="Cliente" placeholder="Cliente X" required>
+
+    <label>Máquina:</label>
+    <input type="text" id="Máquina" placeholder="Paletizadora de Caixas / PLX - 480" required>
+
+    <label>Data de Instalação:</label>
+    <input type="date" value="2025-05-25" required>
+
+    <label>Tipo de Manutenção:</label>
+    <select id="tipo">
+      <option value="corretiva">Corretiva</option>
+      <option value="preventiva">Preventiva</option>
+    </select>
+
+    <label>Urgência:</label>
+    <select id="urgencia">
+      <option value="baixa">Baixa</option>
+      <option value="media">Média</option>
+      <option value="alta">Alta</option>
+    </select>
+
+    <label>Data desejada para atendimento:</label>
+    <input type="date" id="data_atendimento" required>
+
+    <label>Descrição do Problema:</label>
+    <textarea id="descricao" rows="4" placeholder="Ex: Cilindro da Garra..."></textarea>
+
+    <!-- Ícone de anexo abaixo da descrição -->
+    <div style="text-align:center; margin-top:10px;">
+      <button type="button" class="anexo-btn" id="btnAnexar" title="Anexar até 3 imagens">📎 Anexar imagens</button>
+      <input type="file" id="imagens" accept="image/*" multiple style="display:none;">
+      <div style="font-size:12px; color:#666; margin-top:6px;"></div>
+
+      <!-- Pré-visualização -->
+      <div id="preview" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;"></div>
+    </div>
+    <br>
+    <button type="submit">Enviar Solicitação</button>
+  </form>
+
+  <footer style="margin-top: 40px; font-size: 14px; text-align: center;">
+    <p><strong>Coordenador de Service:</strong> Elisandro Varela</p>
+    <p><strong>Email:</strong> <a href="mailto:elisandrovarela18@gmail.com">elisandrovarela18@gmail.com</a></p>
+    <p><strong>Telefone Fixo:</strong> +55 (11) 2101-0123 Ramal 789</p>
+    <p><strong>WhatsApp:</strong> +55 11 9 9102-0304</p>
+  </footer>
+
+  <script>
+    function enviarEmail() {
+      const solicitante = document.getElementById("solicitante").value;
+      const email = document.getElementById("email_solicitante").value;
+      const tipo = document.getElementById("tipo").value;
+      const urgencia = document.getElementById("urgencia").value;
+      const dataAtendimento = document.getElementById("data_atendimento").value;
+      const descricao = document.getElementById("descricao").value;
+
+      const assunto = encodeURIComponent("Solicitação de Manutenção - SISMAQ");
+      const corpo = encodeURIComponent(
+        "Solicitante: " + solicitante + "\n" +
+        "E-mail: " + email + "\n" +
+        "Cliente: Cliente X \n" +
+        "Máquina: Paletizadora de Caixas - PLX - 480\n" +
+        "Tipo de Manutenção: " + tipo + "\n" +
+        "Urgência: " + urgencia + "\n" +
+        "Data desejada: " + dataAtendimento + "\n" +
+        "Descrição: " + descricao
+      );
+
+      window.location.href = "mailto:elisandrovarela18@gmail.com" + encodeURIComponent(email) + "&subject=" + assunto + "&body=" + corpo;
+    }
+
+    function mostrarMensagem() {
+      alert("A funcionalidade de anexar arquivos está em fase de implementação.");
+    }
+  </script>
+
+</body>
+
+</html>
