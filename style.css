@@ -1,101 +1,94 @@
-/* Fundo da página */
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #f4f4f4;
-  color: #003366;
-  font-family: Arial, sans-serif;
+/* ===== Base ===== */
+html, body { margin:0; padding:0; }
+html { -webkit-text-size-adjust: 100%; } /* evita reflow de texto no iOS */
+body { color:#003366; font-family:Arial, sans-serif; background:#f4f4f4; }
+
+/* ===== Card ===== */
+.container{
+  width: min(92vw, 640px);
+  margin: clamp(16px, 4vw, 32px) auto;
+  padding: clamp(12px, 3vw, 24px);
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Cabeçalho responsivo */
+/* ===== Cabeçalho ===== */
 .header{
-  display: flex;
-  align-items: center;
-  justify-content: center;     /* centraliza o bloco de títulos */
+  display:flex;
+  align-items:center;
+  justify-content:center; /* centraliza o bloco de títulos */
   gap: clamp(8px, 2vw, 16px);
   padding: clamp(12px, 3vw, 24px) 0;
 }
-
 .logo{
-  /* Altura da logo escala conforme a tela, com limites */
   height: clamp(56px, 10vw, 100px);
   flex: 0 0 auto;
 }
-
-/* Bloco dos títulos centralizados */
-.titles{
-  text-align: center;
-}
-
-/* Tipografia fluida usando clamp: (min, preferido, max) */
+.titles{ text-align:center; }
 .brand{
-  display: block;
-  font-weight: bold;
+  display:block;
+  font-weight:bold;
   font-size: clamp(24px, 6vw, 36px);
-  margin-bottom: 4px;
+  margin-bottom:4px;
 }
-
 .subtitle{
   font-size: clamp(14px, 3.5vw, 18px);
-  color: #003366;
+  color:#003366;
 }
-
-/* Spacer para equilibrar o centro (imita a largura da logo) */
+/* “Spacer” imita a largura da logo para centralizar de verdade */
 .spacer{
   width: clamp(56px, 10vw, 100px);
-  height: 1px;
-  flex: 0 0 auto;
+  height:1px;
+  flex:0 0 auto;
 }
 
-/* Card do formulário com largura fluida */
-.container{
-  width: min(92vw, 640px);                   /* fluido: até 640px */
-  margin: clamp(16px, 4vw, 32px) auto;
-  padding: clamp(12px, 3vw, 24px);
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
-}
-
-/* Campos e botões com fonte/tamanho fluido */
+/* ===== Form ===== */
 label{
-  display: block;
+  display:block;
   margin-top: clamp(8px, 2vw, 12px);
-  font-weight: bold;
+  font-weight:bold;
   font-size: clamp(14px, 2.8vw, 16px);
 }
-
-input, select, textarea, button{
-  width: 100%;
+input, select, textarea{
+  width:100%;
   padding: clamp(8px, 2.5vw, 12px);
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  margin-top:5px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  box-sizing:border-box;
   font-size: clamp(14px, 2.8vw, 16px);
+  min-height: 44px; /* bom alvo de toque */
 }
+textarea{ min-height: 90px; }
 
 button{
-  background-color: #003366;
-  color: #fff;
-  border: none;
+  width:100%;
+  padding: clamp(10px, 3vw, 14px);
   margin-top: clamp(12px, 3vw, 16px);
-  cursor: pointer;
+  font-size: clamp(14px, 2.8vw, 16px);
+  background:#003366; color:#fff;
+  border:none; border-radius:4px; cursor:pointer;
 }
-button:hover{ background-color:#0055aa; }
+button:hover{ background:#0055aa; }
 
-/* Botão de anexo e pré-visualização */
-.anexo-btn{ 
-  background: none; border: none; cursor: pointer; 
-  font-size: clamp(16px, 3.5vw, 18px); 
-  color:#003366; padding: 8px 14px; border-radius:6px;
+/* ===== Anexos ===== */
+.anexos{
+  text-align:center;
+  margin-top:10px;
+}
+.anexo-btn{
+  background:none; border:none; cursor:pointer;
+  font-size: clamp(16px, 3.5vw, 18px);
+  color:#003366; padding:8px 14px; border-radius:6px;
 }
 .anexo-btn:hover{ color:#0055aa; background:#eef4ff; }
-
+.anexos-hint{
+  font-size:12px; color:#666; margin-top:6px;
+}
 .visually-hidden-file{
   position:absolute; left:-9999px; width:1px; height:1px; opacity:0; overflow:hidden;
 }
-
 #preview{
   display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;
 }
@@ -105,20 +98,30 @@ button:hover{ background-color:#0055aa; }
   object-fit: cover; border:1px solid #ccc; border-radius:6px;
 }
 
-/* Footer */
-footer{
-  text-align:center; 
+/* ===== Footer ===== */
+.footer{
+  text-align:center;
   font-size: clamp(12px, 2.8vw, 14px);
   margin: 24px 0 32px;
   padding: 0 12px;
 }
 
-/* Segurança extra no mobile muito estreito:
-   se quiser empilhar header, ative este bloco */
-@media (max-width: 420px){
-  .header{ flex-direction: column; align-items: flex-start; padding-left: clamp(12px, 4vw, 24px); }
-  .spacer{ display:none; }
-  .titles{ width: 100%; text-align: center; }
+/* ===== Compat iOS: evita zoom ao focar (<16px) ===== */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea, button { font-size: 16px; }
 }
 
+/* ===== Normalização do date no iOS ===== */
+input[type="date"]{
+  height: 44px;
+  padding: 8px 10px;
+}
+input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+input[type="date"]::-webkit-calendar-picker-indicator { margin:0; padding:0 6px; }
 
+/* ===== Extra para telas muito estreitas ===== */
+@media (max-width: 420px){
+  .header{ flex-direction:column; align-items:flex-start; }
+  .spacer{ display:none; }
+  .titles{ width:100%; text-align:center; }
+}
