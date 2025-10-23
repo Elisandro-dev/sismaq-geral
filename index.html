@@ -8,11 +8,10 @@
 </head>
 <body>
 
-  <!-- Card branco incluindo cabeçalho e formulário -->
   <div class="container">
-    <!-- Cabeçalho: logo à esquerda, títulos centralizados -->
+    <!-- Cabeçalho -->
     <header class="header">
-      <img src="logo.png" alt="Logo" class="logo">
+      <img src="logo.png" alt="Logo SISMAQ" class="logo">
       <div class="titles">
         <span class="brand">SISMAQ</span>
         <span class="subtitle">SISTEMA DE MANUTENÇÃO</span>
@@ -21,56 +20,61 @@
     </header>
 
     <!-- Formulário -->
-    <form id="formManutencao">
+    <form id="formManutencao" novalidate>
       <label for="solicitante">Solicitante:</label>
-      <input type="text" id="solicitante" placeholder="Nome do solicitante" required>
+      <input type="text" id="solicitante" name="solicitante" placeholder="Nome do solicitante" required>
 
       <label for="email_solicitante">E-mail do Solicitante:</label>
-      <input type="email" id="email_solicitante" placeholder="Ex: nome@empresa.com" required>
+      <input type="email" id="email_solicitante" name="email_solicitante" placeholder="Ex: nome@empresa.com" required>
 
-      <label for="Cliente">Cliente:</label>
-      <input type="text" id="Cliente" placeholder="Cliente X" required>
+      <!-- Controle para destravar -->
+      <div class="toggle-line">
+        <label class="toggle-label">
+          <input type="checkbox" id="editarFixos">
+          Editar dados fixos (Cliente, Modelo, Nº de Série)
+        </label>
+      </div>
 
-      <input value="Cliente X" disabled>
-      <input type="hidden" name="cliente" value="Cliente X">
+      <label for="cliente">Cliente:</label>
+      <input type="text" id="cliente" name="cliente" value="Cliente X" readonly required>
 
-      <label for="Máquina">Modelo:</label>
-      <input type="text" id="Modelo" placeholder="Paletizadora de Caixas / PLX - 480" required>
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" name="modelo" value="Paletizadora de Caixas / PLX - 480" readonly required>
 
-      <label for="Máquina">Número de Série:</label>
-      <input type="text" id="Número de Série" placeholder="123456789" required>
+      <label for="numero_serie">Número de Série:</label>
+      <input type="text" id="numero_serie" name="numero_serie" value="123456789" readonly required>
 
       <label for="data_instalacao">Data de Instalação:</label>
-      <input type="date" id="data_instalacao" value="2025-05-25" required>
+      <input type="date" id="data_instalacao" name="data_instalacao" value="2025-05-25" required>
 
       <label for="tipo">Tipo de Manutenção:</label>
-      <select id="tipo">
+      <select id="tipo" name="tipo">
         <option value="corretiva">Corretiva</option>
         <option value="preventiva">Preventiva</option>
       </select>
 
       <label for="urgencia">Urgência:</label>
-      <select id="urgencia">
+      <select id="urgencia" name="urgencia">
         <option value="baixa">Baixa</option>
         <option value="media">Média</option>
         <option value="alta">Alta</option>
       </select>
 
       <label for="data_atendimento">Data desejada para atendimento:</label>
-      <input type="date" id="data_atendimento" required>
+      <input type="date" id="data_atendimento" name="data_atendimento" required>
 
       <label for="descricao">Descrição do Problema:</label>
-      <textarea id="descricao" rows="4" placeholder="Ex: Cilindro da Garra..."></textarea>
+      <textarea id="descricao" name="descricao" rows="4" placeholder="Ex: Cilindro da garra não aciona..."></textarea>
 
-      <!-- 📎 Anexar imagens (até 3) -->
+      <!-- Anexos -->
       <div class="anexos">
-        <input type="file" id="imagens" accept="image/*" multiple class="visually-hidden-file">
+        <input type="file" id="imagens" name="imagens" accept="image/*" multiple class="visually-hidden-file">
         <label for="imagens" class="anexo-btn" title="Anexar até 3 imagens">📎 Anexar imagens</label>
         <div class="anexos-hint">JPG/PNG/HEIC • Máx.: 3 arquivos</div>
-        <div id="preview"></div>
+        <div id="preview" class="preview"></div>
       </div>
 
-      <button type="submit">Enviar Solicitação</button>
+      <button type="submit" class="btn-primary">Enviar Solicitação</button>
     </form>
   </div>
 
